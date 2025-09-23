@@ -1,8 +1,10 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import { nanoid } from 'nanoid'
 import './Create.css'
+import { todoContext } from '../../Wrapper'
 
-const Create = ({ todos, settodos }) => {
+const Create = () => {
+    const [todos, setTodos] = useContext(todoContext)
     const [imp, setImp] = useState('normal')
     const [title, setTitle] = useState('')
 
@@ -10,9 +12,9 @@ const Create = ({ todos, settodos }) => {
         e.preventDefault()
         if (!title.trim()) return
         const newTodo = { title: title.trim(), imp, id: nanoid() }
-        settodos([...todos, newTodo])
+        setTodos([...todos, newTodo])
         setTitle('')
-       setImp('normal')
+        setImp('normal')
     }
 
     return (

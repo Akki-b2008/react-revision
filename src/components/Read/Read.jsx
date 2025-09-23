@@ -1,13 +1,15 @@
-import React from 'react'
+import { useContext } from 'react'
 import './Read.css'
+import { todoContext } from '../../Wrapper'
 
-const Read = ({ todos, settodos }) => {
+const Read = () => {
+
+   const [todos, setTodos] = useContext(todoContext)
 
     const deleteHandler = (id) => {
-        settodos(todos.filter(todo => todo.id !== id))
+        setTodos(todos.filter(todo => todo.id !== id))
     }
-    console.log(todos);
-
+    
     const renderTasks = () => {
         return todos.map(task => (
             <li key={task.id} className="task">
