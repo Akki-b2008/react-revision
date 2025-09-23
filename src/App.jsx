@@ -1,20 +1,22 @@
-import { useContext, useState } from 'react'
-import Create from './components/Create/Create'
-import Read from './components/Read/Read'
+import { Route, Routes } from "react-router-dom";
+import Home from "./components/Home";
+import About from "./components/About";
+import Services from "./components/Services";
+import Menu from "./components/Menu";
+import Nav from "./components/Nav";
 
 const App = () => {
   return (
-    <main style={{
-      maxWidth: '1000px',
-      margin: '0 auto',
-      display: 'grid',
-      gap: '2rem',
-      padding: '1rem 0 4rem'
-    }}>
-      <Create />
-      <Read />
-    </main>
-  )
-}
+    <>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/services" element={<Services />} />
+        <Route path="/menu" element={<Menu />} />
+      </Routes>
+    </>
+  );
+};
 
-export default App
+export default App;
